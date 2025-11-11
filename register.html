@@ -107,89 +107,85 @@
     </div>
   </div>
 
-  <script>
-    // Show/hide police clearance section
-    const roleSelect = document.getElementById("role");
-    const pcSection = document.getElementById("policeClearanceSection");
-    const pcInput = document.getElementById("policeClearance");
+  <script type="module">
+  import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-    roleSelect.addEventListener("change", () => {
-      if (roleSelect.value === "sitter") {
-        pcSection.classList.remove("hidden");
-        pcInput.required = true;
-      } else {
-        pcSection.classList.add("hidden");
-        pcInput.required = false;
-      }
-    });
+  // ✅ Initialize Supabase client
+  const supabaseUrl = "https://fluhpvufuddebnyxglfq.supabase.co";
+  const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZsdWhwdnVmdWRkZWJueXhnbGZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI3OTcxNDgsImV4cCI6MjA3ODM3MzE0OH0.XlKT5hd1jUW62i0MK15Han2r_ClxVYikWVQ4q7r_JaI";
+  const supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
 
-    // Supabase setup
-    const supabaseUrl = "https://fluhpvufuddebnyxglfq.supabase.co";
-    const supabaseAnonKey = "YOUR_ANON_KEY_HERE"; // replace the key HERE safely
-    const supabaseClient = supabase.createClient(supabaseUrl, supabaseAnonKey);
+  // ✅ DOM elements
+  const form = document.getElementById("register-form");
+  const roleSelect = document.getElementById("role");
+  const pcSection = document.getElementById("policeClearanceSection");
+  const pcInput = document.getElementById("policeClearance");
 
-    // Full signup process
-    document.getElementById("register-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
+  // ✅ Show/hide police clearance section
+  roleSelect.addEventListener("change", () => {
+    if (roleSelect.value === "sitter") {
+      pcSection.classList.remove("hidden");
+      pcInput.required = true;
+    } else {
+      pcSection.classList.add("hidden");
+      pcInput.required = false;
+    }
+  });
 
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      const role = document.getElementById("role").value;
-      const file = document.getElementById("policeClearance").files[0];
+  // ✅ Handle form submission
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      // 1️⃣ Create user in Auth
-      const { data: authData, error: authError } = await supabaseClient.auth.signUp({
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const role = document.getElementById("role").value;
+    const policeFile = document.getElementById("policeClearance").files[0];
+
+    try {
+      // 1️⃣ Create Supabase Auth user
+      const { data: signupData, error: signupError } = await supabaseClient.auth.signUp({
         email,
         password,
         options: { data: { full_name: name, role: role } }
       });
 
-      if (authError) {
-        alert("Signup failed: " + authError.message);
-        return;
-      }
+      if (signupError) throw signupError;
 
-      const userId = authData.user.id;
+      const userId = signupData.user?.id;
 
-      // 2️⃣ Insert into users table
-      await supabaseClient.from("users").insert({
-        id: userId,
-        full_name: name,
-        role: role,
-        email: email
-      });
+      // 2️⃣ Upload police clearance if sitter
+      if (role === "sitter" && policeFile) {
+        const ext = policeFile.name.split(".").pop();
+        const filePath = `${userId}/police-clearance.${ext}`;
 
-      // 3️⃣ If sitter, upload clearance
-      if (role === "sitter" && file) {
-        const ext = file.name.split(".").pop();
-        const path = `${userId}/police-clearance.${ext}`;
-
-        const { error: uploadError } = await supabaseClient
-          .storage
+        const { error: uploadError } = await supabaseClient.storage
           .from("police-clearance")
-          .upload(path, file, { upsert: true });
+          .upload(filePath, policeFile, { upsert: true });
 
-        if (uploadError) {
-          alert("Failed to upload clearance: " + uploadError.message);
-          return;
-        }
+        if (uploadError) throw uploadError;
 
-        // 4️⃣ Add sitter verification row
         await supabaseClient.from("sitter_verification").insert({
           user_id: userId,
-          file_path: path,
+          file_path: filePath,
           status: "pending"
         });
       }
 
-      alert("Account created successfully!");
+      alert("✅ Account created successfully!");
       window.location.href = "/login.html";
-    });
-  </script>
+
+    } catch (err) {
+      console.error(err);
+      alert("❌ Error: " + err.message);
+    }
+  });
+</script>
+
 
 </body>
 </html>
+
 
 
 
