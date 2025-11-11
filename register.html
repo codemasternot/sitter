@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - All Sitters</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Supabase -->
+    <script src="https://esm.sh/@supabase/supabase-js@2"></script>
+
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body class="relative min-h-screen flex items-center justify-center p-4 bg-cover bg-center text-foreground"
+  style="background-image: url('ChatGPT Image Nov 5, 2025, 05_11_21 PM.png');">
+
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-black/50 pointer-events-none"></div>
+
+  <div class="relative z-10 w-full max-w-md rounded-lg border bg-card/90 backdrop-blur-md text-card-foreground shadow-modal">
+
+    <!-- Header -->
+    <div class="flex flex-col space-y-1.5 p-6 text-center">
+      <div class="flex justify-center mb-4">
+        <div class="bg-primary rounded-full p-3">
+          <svg class="h-8 w-8 text-primary-foreground" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="7" r="4"></circle>
+            <path d="M20 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M4 21v-2a4 4 0 0 1 3-3.87"></path>
+          </svg>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-semibold leading-none tracking-tight text-white drop-shadow-lg">
+        Create an Account
+      </h3>
+      <p class="text-sm text-gray-200">Join All Sitters to connect with trusted clients or sitters</p>
+    </div>
+
+    <!-- Form -->
+    <div class="p-6 pt-0">
+      <form id="register-form" class="space-y-4">
+
+        <!-- Name -->
+        <div>
+          <label class="text-sm font-medium text-white">Full Name</label>
+          <input id="name" type="text"
+            class="w-full h-10 rounded-md border bg-white/80 px-3 text-sm"
+            required />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="text-sm font-medium text-white">Email</label>
+          <input id="email" type="email"
+            class="w-full h-10 rounded-md border bg-white/80 px-3 text-sm"
+            required />
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label class="text-sm font-medium text-white">Password</label>
+          <input id="password" type="password"
+            class="w-full h-10 rounded-md border bg-white/80 px-3 text-sm"
+            required />
+        </div>
+
+        <!-- Role -->
+        <div>
+          <label class="text-sm font-medium text-white">Register as</label>
+          <select id="role"
+            class="w-full h-10 rounded-md border bg-white/80 px-3 text-sm"
+            required>
+            <option value="">Select role</option>
+            <option value="client">Client</option>
+            <option value="sitter">Sitter</option>
+          </select>
+        </div>
+
+        <!-- Police Clearance -->
+        <div id="policeClearanceSection" class="hidden mt-4 space-y-2">
+          <label class="text-sm font-medium text-white">
+            Police Clearance Certificate (PDF or Image)
+          </label>
+
+          <input type="file" id="policeClearance" accept=".pdf,image/*"
+            class="w-full rounded-md border bg-white/80 p-2 text-sm text-gray-800" />
+
+          <p class="text-xs text-gray-200">
+            Required for sitters only — ensures trust and safety.
+          </p>
+        </div>
+
+        <button type="submit"
+          class="w-full gradient-hero text-white rounded-md h-10 shadow-md hover:opacity-90 transition">
+          Create Account
+        </button>
+      </form>
+
+      <div class="mt-6 text-center text-sm text-gray-200">
+        Already have an account?
+        <a href="/login.html" class="text-cyan-400 hover:underline">Log in</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Show/hide police clearance section
+    const roleSelect = document.getElementById("role");
+    const pcSection = document.getElementById("policeClearanceSection");
+    const pcInput = document.getElementById("policeClearance");
+
+    roleSelect.addEventListener("change", () => {
+      if (roleSelect.value === "sitter") {
+        pcSection.classList.remove("hidden");
+        pcInput.required = true;
+      } else {
+        pcSection.classList.add("hidden");
+        pcInput.required = false;
+      }
+    });
+
+    // Supabase setup
+    const supabaseUrl = "https://fluhpvufuddebnyxglfq.supabase.co";
+    const supabaseAnonKey = "YOUR_ANON_KEY_HERE"; // replace the key HERE safely
+    const supabaseClient = supabase.createClient(supabaseUrl, supabaseAnonKey);
+
+    // Full signup process
+    document.getElementById("register-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const role = document.getElementById("role").value;
+      const file = document.getElementById("policeClearance").files[0];
+
+      // 1️⃣ Create user in Auth
+      const { data: authData, error: authError } = await supabaseClient.auth.signUp({
+        email,
+        password,
+        options: { data: { full_name: name, role: role } }
+      });
+
+      if (authError) {
+        alert("Signup failed: " + authError.message);
+        return;
+      }
+
+      const userId = authData.user.id;
+
+      // 2️⃣ Insert into users table
+      await supabaseClient.from("users").insert({
+        id: userId,
+        full_name: name,
+        role: role,
+        email: email
+      });
+
+      // 3️⃣ If sitter, upload clearance
+      if (role === "sitter" && file) {
+        const ext = file.name.split(".").pop();
+        const path = `${userId}/police-clearance.${ext}`;
+
+        const { error: uploadError } = await supabaseClient
+          .storage
+          .from("police-clearance")
+          .upload(path, file, { upsert: true });
+
+        if (uploadError) {
+          alert("Failed to upload clearance: " + uploadError.message);
+          return;
+        }
+
+        // 4️⃣ Add sitter verification row
+        await supabaseClient.from("sitter_verification").insert({
+          user_id: userId,
+          file_path: path,
+          status: "pending"
+        });
+      }
+
+      alert("Account created successfully!");
+      window.location.href = "/login.html";
+    });
+  </script>
+
+</body>
+</html>
+
+
+

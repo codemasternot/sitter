@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select Service | All Sitters</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #1b1c1f 0%, #0f1013 100%);
+      color: #e5e7eb;
+    }
+    .card {
+      background: rgba(20, 20, 25, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #a855f7, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .option-circle {
+      transition: 0.25s ease;
+    }
+    .option-circle.selected {
+      box-shadow: 0 0 20px #06b6d4;
+      border-color: #06b6d4;
+      transform: scale(1.08);
+    }
+    input, select, textarea {
+      background: rgba(255,255,255,0.85);
+      color: #111;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="sticky top-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/10">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+
+      <a href="/" class="flex items-center space-x-2 group">
+        <div class="bg-primary rounded-full p-2 group-hover:scale-110 transition-transform">
+          <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="4" r="2"/>
+            <circle cx="18" cy="8" r="2"/>
+            <circle cx="20" cy="16" r="2"/>
+            <path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/>
+          </svg>
+        </div>
+        <span class="text-xl font-bold gradient-text">All Sitters</span>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="how-it-works.html" class="text-gray-300 hover:text-white">How It Works</a>
+        <a href="pricing.html" class="text-gray-300 hover:text-white">Pricing</a>
+        <a href="sitter-resources.html" class="text-gray-300 hover:text-white">Sitter Resources</a>
+        <a href="about.html" class="text-gray-300 hover:text-white">About</a>
+        <a href="contact.html" class="text-gray-300 hover:text-white">Contact</a>
+      </div>
+
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="login.html" class="text-gray-300 hover:text-white">Log In</a>
+        <a href="register.html" class="bg-gradient-to-r from-purple-600 to-cyan-500 text-white px-4 py-2 rounded-md hover:opacity-90 transition-all">Sign Up</a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="text-center py-16">
+  <h1 class="text-4xl md:text-6xl font-bold gradient-text">Choose Your Service</h1>
+  <p class="text-gray-400 mt-3 max-w-2xl mx-auto text-lg">Select what type of sitter you need and we'll show the right form.</p>
+</section>
+
+<!-- Service Selection -->
+<section class="container mx-auto px-6 pb-16">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+
+    <div id="petOption" class="card option-circle p-8 rounded-xl cursor-pointer border border-white/10">
+      <img src="https://img.icons8.com/fluency/96/dog.png" class="mx-auto mb-4">
+      <h3 class="text-xl font-semibold">Pet Sitting</h3>
+    </div>
+
+    <div id="babyOption" class="card option-circle p-8 rounded-xl cursor-pointer border border-white/10">
+      <img src="https://img.icons8.com/fluency/96/baby.png" class="mx-auto mb-4">
+      <h3 class="text-xl font-semibold">Baby Sitting</h3>
+    </div>
+
+    <div id="houseOption" class="card option-circle p-8 rounded-xl cursor-pointer border border-white/10">
+      <img src="https://img.icons8.com/fluency/96/home.png" class="mx-auto mb-4">
+      <h3 class="text-xl font-semibold">House Sitting</h3>
+    </div>
+
+  </div>
+</section>
+
+<!-- Dynamic Form -->
+<section class="container mx-auto px-6 pb-20">
+  <div id="formContainer" class="card p-8 rounded-xl shadow-lg hidden">
+    
+    <h2 id="formTitle" class="text-2xl font-bold mb-6 gradient-text"></h2>
+
+    <form id="serviceForm" class="space-y-5">
+
+      <!-- Common fields -->
+      <div>
+        <label class="block mb-1 text-sm">Your Location</label>
+        <input type="text" class="w-full h-11 rounded-md px-3 border" placeholder="City / Suburb" required>
+      </div>
+
+      <div>
+        <label class="block mb-1 text-sm">Start Date</label>
+        <input type="date" class="w-full h-11 rounded-md px-3 border" required>
+      </div>
+
+      <div>
+        <label class="block mb-1 text-sm">End Date</label>
+        <input type="date" class="w-full h-11 rounded-md px-3 border" required>
+      </div>
+
+      <!-- Dynamic area -->
+      <div id="dynamicFields"></div>
+
+      <button class="w-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white py-3 rounded-md font-medium hover:opacity-90">
+        Submit Request
+      </button>
+
+    </form>
+  </div>
+</section>
+
+<script>
+  const petOption = document.getElementById("petOption");
+  const babyOption = document.getElementById("babyOption");
+  const houseOption = document.getElementById("houseOption");
+
+  const formContainer = document.getElementById("formContainer");
+  const formTitle = document.getElementById("formTitle");
+  const dynamicFields = document.getElementById("dynamicFields");
+
+  function resetSelection() {
+    petOption.classList.remove("selected");
+    babyOption.classList.remove("selected");
+    houseOption.classList.remove("selected");
+  }
+
+  function showForm(type) {
+    formContainer.classList.remove("hidden");
+    dynamicFields.innerHTML = ""; 
+
+    if (type === "pet") {
+  formTitle.innerText = "Pet Sitting Details";
+
+  dynamicFields.innerHTML = `
+    <div>
+      <label class="block mb-1 text-sm">Pet Type</label>
+      <select id="petTypeSelect" class="w-full h-11 rounded-md px-3 border">
+        <option value="Dog">Dog</option>
+        <option value="Cat">Cat</option>
+        <option value="Bird">Bird</option>
+        <option value="Exotic">Exotic</option>
+      </select>
+    </div>
+
+    <div id="exoticDetails" class="hidden">
+      <label class="block mb-1 text-sm">Exotic Animal Details</label>
+      <textarea class="w-full rounded-md px-3 py-2 border" 
+      placeholder="Describe the exotic pet (e.g., tarantula, snake breed, reptile species, tiger, lion, ect)."></textarea>
+    </div>
+
+    <div>
+      <label class="block mb-1 text-sm">Vet Details (Optional)</label>
+      <textarea class="w-full rounded-md px-3 py-2 border" placeholder="Clinic name, doctor, emergency contacts"></textarea>
+    </div>
+  `;
+
+  // Exotic toggle behavior  
+  setTimeout(() => {
+    const petTypeSelect = document.getElementById("petTypeSelect");
+    const exoticDetails = document.getElementById("exoticDetails");
+
+    petTypeSelect.addEventListener("change", () => {
+      if (petTypeSelect.value === "Exotic") {
+        exoticDetails.classList.remove("hidden");
+      } else {
+        exoticDetails.classList.add("hidden");
+      }
+    });
+  }, 50);
+}
+
+
+    if (type === "baby") {
+      formTitle.innerText = "Babysitting Details";
+
+      dynamicFields.innerHTML = `
+        <div>
+          <label class="block mb-1 text-sm">Child Age</label>
+          <input type="number" class="w-full h-11 rounded-md px-3 border" placeholder="Age in years">
+        </div>
+
+        <div>
+          <label class="block mb-1 text-sm">Doctor Details (Optional)</label>
+          <textarea class="w-full rounded-md px-3 py-2 border" placeholder="Doctor name, emergency contacts"></textarea>
+        </div>
+      `;
+    }
+
+    if (type === "house") {
+      formTitle.innerText = "House Sitting Details";
+
+      dynamicFields.innerHTML = `
+        <div>
+          <label class="block mb-1 text-sm">Alarm / Security Instructions</label>
+          <textarea class="w-full rounded-md px-3 py-2 border" placeholder="Codes, sensors, routine"></textarea>
+        </div>
+
+        <div>
+          <label class="block mb-1 text-sm">Insurance Details (Optional)</label>
+          <textarea class="w-full rounded-md px-3 py-2 border" placeholder="Home insurance provider, policy number"></textarea>
+        </div>
+      `;
+    }
+  }
+
+  petOption.onclick = () => { resetSelection(); petOption.classList.add("selected"); showForm("pet"); };
+  babyOption.onclick = () => { resetSelection(); babyOption.classList.add("selected"); showForm("baby"); };
+  houseOption.onclick = () => { resetSelection(); houseOption.classList.add("selected"); showForm("house"); };
+</script>
+
+<footer class="py-6 text-center text-gray-500 text-sm border-t border-white/10 mt-16">
+  © 2025 All Sitters • Built with AI • Safe • Reliable • Transparent. A member of the Block Vault X group.
+</footer>
+
+</body>
+</html>

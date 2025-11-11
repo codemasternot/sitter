@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Sitters - Find Trusted Pet, Baby & House Sitters</title>
+    <meta name="description" content="Connect with verified, trusted sitters for pets, babies, and houses. Book reliable sitting services in your area with confidence." />
+    <meta name="author" content="All Sitters" />
+
+    <meta property="og:title" content="All Sitters - Find Trusted Pet, Baby & House Sitters" />
+    <meta property="og:description" content="Connect with verified, trusted sitters for pets, babies, and houses. Book reliable sitting services in your area with confidence." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Lovable" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body class="bg-background text-foreground">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <a href="/" class="flex items-center space-x-2 group">
+            <div class="bg-primary rounded-full p-2 group-hover:scale-110 transition-smooth">
+              <svg class="h-5 w-5 text-primary-foreground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/>
+              </svg>
+            </div>
+            <span class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              All Sitters
+            </span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="how-it-works.html" class="text-foreground/80 hover:text-primary transition-smooth">How It Works</a>
+            <a id="findSitterBtn" href="#" class="text-foreground/80 hover:text-primary transition-smooth">Find Sitters</a>
+            <a id="becomeSitterBtn" href="#" class="text-foreground/80 hover:text-primary transition-smooth">Become a Sitter</a>
+            <a href="pricing.html" class="text-foreground/80 hover:text-primary transition-smooth">Pricing</a>
+            <a href="about.html" class="text-foreground/80 hover:text-primary transition-smooth">About Us</a>
+          </div>
+          <!-- Desktop Auth Buttons -->
+          <div class="hidden md:flex items-center space-x-4">
+            <a href="login.html" class="inline-flex items-center justify-center rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-smooth h-10 px-4 py-2">Log In</a>
+            <a href="register.html" class="inline-flex items-center justify-center rounded-md text-sm font-medium bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-smooth shadow-card hover:shadow-card-hover h-10 px-4 py-2">Sign Up</a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-muted transition-smooth">
+            <svg id="menu-icon" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="close-icon" class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-border animate-fade-in">
+          <div class="flex flex-col space-y-4">
+            <a href="how-it-works.html" class="text-foreground/80 hover:text-primary transition-smooth px-4 py-2">How It Works</a>
+            <a href="search.html" class="text-foreground/80 hover:text-primary transition-smooth px-4 py-2">Find Sitters</a>
+            <a id="findSitterBtn" href="#" class="text-foreground/80 hover:text-primary transition-smooth px-4 py-2">Become a Sitter</a>
+            <a href="pricing.html" class="text-foreground/80 hover:text-primary transition-smooth px-4 py-2">Pricing</a>
+            <div class="flex flex-col space-y-2 px-4 pt-4 border-t border-border">
+              <a href="/login.html" class="inline-flex items-center justify-center rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-smooth h-10 px-4 py-2">Log In</a>
+              <a href="/register.html" class="inline-flex items-center justify-center rounded-md text-sm font-medium bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-smooth shadow-card hover:shadow-card-hover h-10 px-4 py-2">Sign Up</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+<section 
+  class="relative py-20 px-4 bg-cover bg-center" 
+  style="background-image: url('ChatGPT Image Nov 5, 2025, 05_11_21 PM.png');"
+>
+  <!-- Dark overlay for readability -->
+  <div class="absolute inset-0 bg-black/50"></div>
+
+  <div class="container mx-auto text-center relative z-10">
+    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
+      Find Trusted Sitters Near You
+    </h1>
+    <p class="text-xl text-gray-100 mb-8 max-w-2xl mx-auto animate-fade-in">
+      Connect with verified, reliable sitters for your pets, babies, or home
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+      <a id="findSitterBtn" href="search.html" class="bg-secondary text-white hover:bg-secondary/90 transition-smooth shadow-md hover:shadow-lg inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8">
+        Find a Sitter
+      </a>
+      <a id="becomeSitterBtn" href="register.html" class="bg-white text-primary hover:bg-gray-100 transition-smooth inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8">
+        Become a Sitter
+      </a>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Services Section -->
+    <section class="py-16 px-4">
+      <div class="container mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Our Services</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Pet Sitting -->
+          <div class="rounded-lg border bg-card text-card-foreground shadow-sm hover-lift shadow-card border-border">
+            <div class="p-6 text-center">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                <svg class="h-8 w-8 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Pet Sitting</h3>
+              <p class="text-muted-foreground">Professional care for your furry friends while you're away</p>
+            </div>
+          </div>
+
+          <!-- Baby Sitting -->
+          <div class="rounded-lg border bg-card text-card-foreground shadow-sm hover-lift shadow-card border-border">
+            <div class="p-6 text-center">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                <svg class="h-8 w-8 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"/><path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Baby Sitting</h3>
+              <p class="text-muted-foreground">Trusted caregivers for your little ones</p>
+            </div>
+          </div>
+
+          <!-- House Sitting -->
+          <div class="rounded-lg border bg-card text-card-foreground shadow-sm hover-lift shadow-card border-border">
+            <div class="p-6 text-center">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                <svg class="h-8 w-8 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">House Sitting</h3>
+              <p class="text-muted-foreground">Keep your home safe and maintained</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-16 px-4 bg-muted">
+      <div class="container mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">How It Works</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold mb-4">1</div>
+            <h3 class="text-xl font-semibold mb-2">Search & Filter</h3>
+            <p class="text-muted-foreground">Find sitters by location, service type, and ratings</p>
+          </div>
+          <div class="text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold mb-4">2</div>
+            <h3 class="text-xl font-semibold mb-2">Book & Connect</h3>
+            <p class="text-muted-foreground">Request a sitter and chat to discuss details</p>
+          </div>
+          <div class="text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold mb-4">3</div>
+            <h3 class="text-xl font-semibold mb-2">Relax & Enjoy</h3>
+            <p class="text-muted-foreground">Your loved ones are in trusted hands</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 px-4">
+      <div class="container mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">What Our Users Say</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="rounded-lg border bg-card text-card-foreground shadow-sm shadow-card border-border h-full">
+            <div class="p-6">
+              <div class="flex gap-1 mb-4">
+                <svg class="h-5 w-5 fill-secondary text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="h-5 w-5 fill-secondary text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="h-5 w-5 fill-secondary text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="h-5 w-5 fill-secondary text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="h-5 w-5 fill-secondary text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="text-foreground/90 mb-4 italic">"Found the perfect pet sitter for my dog. Highly recommend!"</p>
+              <div class="mt-4">
+                <p class="font-semibold">Sarah M.</p>
+                <p class="text-sm text-muted-foreground">Pet Owner</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-lg border bg-card text-card-foreground shadow-sm shadow-card border-border h-full">
+            <div class="p-6">
+              <div class="flex gap-1 mb-4">
+                <svg class="h-5 w-5 fill-secondary text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="h-5 w-5 fill-secondary text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="h-5 w-5 fill-secondary text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="h-5 w-5 fill-secondary text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="h-5 w-5 fill-secondary text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="text-foreground/90 mb-4 italic">"Great platform with verified sitters. My kids loved their babysitter!"</p>
+              <div class="mt-4">
+                <p class="font-semibold">Michael T.</p>
+                <p class="text-sm text-muted-foreground">Parent</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-lg border bg-card text-card-foreground shadow-sm shadow-card border-border h-full">
+            <div class="p-6">
+              <div class="flex gap-1 mb-4">
+                <svg class="h-5 w-5 fill-secondary text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="h-5 w-5 fill-secondary text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="h-5 w-5 fill-secondary text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="h-5 w-5 fill-secondary text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg class="h-5 w-5 fill-secondary text-secondary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="text-foreground/90 mb-4 italic">"Easy to use and professional service. Peace of mind while traveling!"</p>
+              <div class="mt-4">
+                <p class="font-semibold">Emily R.</p>
+                <p class="text-sm text-muted-foreground">Homeowner</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-4 gradient-hero">
+      <div class="container mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">Ready to Get Started?</h2>
+        <p class="text-xl text-primary-foreground/90 mb-8">Join thousands of happy clients and sitters</p>
+        <a href="register.html" class="bg-background text-foreground hover:bg-background/90 transition-smooth inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8">
+          Sign Up Now
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-muted border-t border-border">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <!-- Brand Column -->
+          <div class="lg:col-span-2">
+            <a href="/" class="flex items-center space-x-2 mb-4">
+              <div class="bg-primary rounded-full p-2">
+                <svg class="h-5 w-5 text-primary-foreground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/>
+                </svg>
+              </div>
+              <span class="text-xl font-bold">All Sitters</span>
+            </a>
+            <p class="text-muted-foreground mb-6 max-w-md">
+              Connecting trusted sitters with families who need reliable pet, baby, and house sitting services.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="p-2 rounded-full bg-background hover:bg-primary hover:text-primary-foreground transition-smooth" aria-label="Facebook">
+                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              <a href="#" class="p-2 rounded-full bg-background hover:bg-primary hover:text-primary-foreground transition-smooth" aria-label="Twitter">
+                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+              </a>
+              <a href="#" class="p-2 rounded-full bg-background hover:bg-primary hover:text-primary-foreground transition-smooth" aria-label="Instagram">
+                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              </a>
+              <a href="#" class="p-2 rounded-full bg-background hover:bg-primary hover:text-primary-foreground transition-smooth" aria-label="Email">
+                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Links Columns -->
+          <div>
+            <h3 class="font-semibold mb-4">For Clients</h3>
+            <ul class="space-y-2">
+              <li><a href="search.html" class="text-muted-foreground hover:text-primary transition-smooth">Find a Sitter</a></li>
+              <li><a href="how-it-works.html" class="text-muted-foreground hover:text-primary transition-smooth">How It Works</a></li>
+              <li><a href="pricing.html" class="text-muted-foreground hover:text-primary transition-smooth">Pricing</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-semibold mb-4">For Sitters</h3>
+            <ul class="space-y-2">
+              <li><a href="register.html" class="text-muted-foreground hover:text-primary transition-smooth">Become a Sitter</a></li>
+              <li><a href="sitter-resources.html" class="text-muted-foreground hover:text-primary transition-smooth">Sitter Resources</a></li>
+              <li><a href="background-check.html" class="text-muted-foreground hover:text-primary transition-smooth">Background Checks</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-semibold mb-4">Company</h3>
+            <ul class="space-y-2">
+              <li><a href="about.html" class="text-muted-foreground hover:text-primary transition-smooth">About Us</a></li>
+              <li><a href="contact.html" class="text-muted-foreground hover:text-primary transition-smooth">Contact</a></li>
+              <li><a href="privacy.html" class="text-muted-foreground hover:text-primary transition-smooth">Privacy Policy</a></li>
+              <li><a href="terms.html" class="text-muted-foreground hover:text-primary transition-smooth">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-border text-center text-muted-foreground">
+          <p>&copy; 2024 All Sitters. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const findSitterBtn = document.getElementById("findSitterBtn");
+    const becomeSitterBtn = document.getElementById("becomeSitterBtn");
+
+    // Check if user is logged in
+    const isLoggedIn = localStorage.getItem("userLoggedIn") === "true";
+
+    if (findSitterBtn) {
+      findSitterBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (isLoggedIn) {
+          window.location.href = "search.html";
+        } else {
+          window.location.href = "login.html";
+        }
+      });
+    }
+
+    if (becomeSitterBtn) {
+      becomeSitterBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (isLoggedIn) {
+          window.location.href = "sitter-options.html";
+        } else {
+          window.location.href = "login.html";
+        }
+      });
+    }
+  });
+</script>
+
+  </body>
+</html>

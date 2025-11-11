@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing | All Sitters</title>
+    <meta name="description" content="Transparent pricing for All Sitters. Learn how sitter pricing, platform fees, VAT, and crypto discounts work." />
+    <meta name="author" content="All Sitters" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+      body {
+        background: radial-gradient(circle at top, #1b1c1f 0%, #0f1013 100%);
+        color: #e5e7eb;
+      }
+      .card {
+        background: rgba(20, 20, 25, 0.8);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .gradient-text {
+        background: linear-gradient(90deg, #a855f7, #06b6d4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/10">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="/" class="flex items-center space-x-2 group">
+            <div class="bg-primary rounded-full p-2 group-hover:scale-110 transition-transform">
+              <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/>
+                <path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/>
+              </svg>
+            </div>
+            <span class="text-xl font-bold gradient-text">All Sitters</span>
+          </a>
+
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="how-it-works.html" class="text-gray-300 hover:text-white">How It Works</a>
+            <a href="search.html" class="text-gray-300 hover:text-white">Find Sitters</a>
+            <a href="register.html" class="text-gray-300 hover:text-white">Become a Sitter</a>
+            <a href="pricing.html" class="text-white font-semibold border-b-2 border-cyan-400 pb-1">Pricing</a>
+          </div>
+
+          <div class="hidden md:flex items-center space-x-4">
+            <a href="login.html" class="text-gray-300 hover:text-white">Log In</a>
+            <a href="register.html" class="bg-gradient-to-r from-purple-600 to-cyan-500 text-white px-4 py-2 rounded-md hover:opacity-90 transition-all">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="text-center py-24">
+      <h1 class="text-4xl md:text-6xl font-bold gradient-text mb-4">Pricing & Payments</h1>
+      <p class="text-gray-400 max-w-2xl mx-auto text-lg">Transparent, fair, and automatically calculated — all prices shown in South African Rand (ZAR).</p>
+    </section>
+
+    <!-- Pricing Content -->
+    <main class="container mx-auto px-6 pb-20 space-y-16">
+      <!-- Fee Details -->
+      <section class="card p-8 rounded-xl shadow-lg">
+        <h2 class="text-2xl font-bold mb-4 gradient-text">How Pricing Works</h2>
+        <ul class="space-y-3 text-gray-300">
+          <li>💼 <strong>Platform Fee:</strong> 5% added to sitter price for platform operations and security.</li>
+          <li>💳 <strong>Paystack Fee:</strong> 2% for local card, bank, and EFT payments.</li>
+          <li>🪙 <strong>Crypto Fee:</strong> 1% for Stellar (XLM), Ripple (XRP), or Solana (SOL) transactions — encouraging crypto use.</li>
+          <li>🧾 <strong>VAT:</strong> 15% applied to base + platform fee (per South African tax law).</li>
+        </ul>
+      </section>
+
+      <!-- Calculator -->
+      <section class="card p-8 rounded-xl shadow-lg text-center">
+        <h2 class="text-2xl font-bold mb-6 gradient-text">Dynamic Pricing Calculator</h2>
+        <p class="text-gray-400 mb-6">Enter a sitter’s base price to see the total cost including VAT and fees.</p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-6">
+          <input id="sitterPrice" type="number" placeholder="Enter sitter's price (R)" class="w-full sm:w-1/3 p-3 rounded-lg text-gray-900" />
+          <button id="calcBtn" class="bg-gradient-to-r from-purple-600 to-cyan-500 text-white rounded-lg px-6 py-3 transition-all hover:opacity-90">Calculate</button>
+        </div>
+
+        <div id="results" class="space-y-6 hidden">
+          <div class="p-6 rounded-lg bg-gray-800/70">
+            <h3 class="text-xl font-semibold mb-2 text-white">💳 Paystack (Card / EFT)</h3>
+            <p>Platform Fee: <span id="fiatPlatform"></span></p>
+            <p>Paystack Fee: <span id="fiatPaystack"></span></p>
+            <p>VAT: <span id="fiatVat"></span></p>
+            <p class="text-lg mt-2">Total: <strong id="fiatTotal"></strong></p>
+          </div>
+
+          <div class="p-6 rounded-lg bg-gray-800/70">
+            <h3 class="text-xl font-semibold mb-2 text-white">🪙 Crypto (XLM / XRP / SOL)</h3>
+            <p>Platform Fee: <span id="cryptoPlatform"></span></p>
+            <p>Crypto Fee: <span id="cryptoFee"></span></p>
+            <p>VAT: <span id="cryptoVat"></span></p>
+            <p class="text-lg mt-2">Total: <strong id="cryptoTotal"></strong></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Escrow -->
+      <section class="card p-8 rounded-xl shadow-lg">
+        <h2 class="text-2xl font-bold mb-4 gradient-text">Escrow — Safety for Both Sides</h2>
+        <p class="text-gray-300 mb-4">
+          All Sitters uses an <strong>escrow system</strong> to keep transactions secure:
+        </p>
+        <ul class="list-disc list-inside space-y-2 text-gray-300">
+          <li>Funds are held until the sitter completes the job.</li>
+          <li>Clients confirm before funds are released.</li>
+          <li>Disputes are handled fairly, ensuring trust for both sides.</li>
+        </ul>
+        <p class="mt-4 text-gray-300">
+          Escrow protects clients from poor service and guarantees payment for sitters once verified.
+        </p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center text-gray-500 text-sm border-t border-white/10">
+      <p>© 2025 All Sitters — A product of YourCompany Holdings</p>
+    </footer>
+
+    <!-- Calculator Script -->
+    <script>
+      document.getElementById('calcBtn').addEventListener('click', () => {
+        const price = parseFloat(document.getElementById('sitterPrice').value);
+        if (!price || price <= 0) return;
+
+        const platformFee = 0.05 * price;
+        const vat = 0.15 * (price + platformFee);
+        const paystackFee = 0.02 * price;
+        const totalFiat = price + platformFee + paystackFee + vat;
+        const cryptoFee = 0.01 * price;
+        const totalCrypto = price + platformFee + cryptoFee + vat;
+
+        document.getElementById('results').classList.remove('hidden');
+        document.getElementById('fiatPlatform').textContent = `R${platformFee.toFixed(2)}`;
+        document.getElementById('fiatPaystack').textContent = `R${paystackFee.toFixed(2)}`;
+        document.getElementById('fiatVat').textContent = `R${vat.toFixed(2)}`;
+        document.getElementById('fiatTotal').textContent = `R${totalFiat.toFixed(2)}`;
+        document.getElementById('cryptoPlatform').textContent = `R${platformFee.toFixed(2)}`;
+        document.getElementById('cryptoFee').textContent = `R${cryptoFee.toFixed(2)}`;
+        document.getElementById('cryptoVat').textContent = `R${vat.toFixed(2)}`;
+        document.getElementById('cryptoTotal').textContent = `R${totalCrypto.toFixed(2)}`;
+      });
+    </script>
+  </body>
+</html>
+

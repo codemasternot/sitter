@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | All Sitters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      body {
+        background: radial-gradient(circle at top, #1b1c1f 0%, #0f1013 100%);
+        color: #e5e7eb;
+      }
+      .card {
+        background: rgba(20, 20, 25, 0.85);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .gradient-text {
+        background: linear-gradient(90deg, #a855f7, #06b6d4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/10">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="/" class="flex items-center space-x-2 group">
+            <div class="bg-primary rounded-full p-2 group-hover:scale-110 transition-transform">
+              <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/>
+                <path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/>
+              </svg>
+            </div>
+            <span class="text-xl font-bold gradient-text">All Sitters</span>
+          </a>
+
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="how-it-works.html" class="text-gray-300 hover:text-white">How It Works</a>
+            <a href="pricing.html" class="text-gray-300 hover:text-white">Pricing</a>
+            <a href="sitter-resources.html" class="text-gray-300 hover:text-white">Sitter Resources</a>
+            <a href="background-check.html" class="text-gray-300 hover:text-white">Background Check</a>
+            <a href="about.html" class="text-white font-semibold border-b-2 border-cyan-400 pb-1">About</a>
+          </div>
+
+          <div class="hidden md:flex items-center space-x-4">
+            <a href="login.html" class="text-gray-300 hover:text-white">Log In</a>
+            <a href="register.html" class="bg-gradient-to-r from-purple-600 to-cyan-500 text-white px-4 py-2 rounded-md hover:opacity-90 transition-all">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="text-center py-24">
+      <h1 class="text-4xl md:text-6xl font-bold gradient-text mb-4">About All Sitters</h1>
+      <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+        Built with AI. Inspired by trust. Designed for the future of care.
+      </p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 pb-20 space-y-12">
+      <!-- Mission -->
+      <section class="card p-8 rounded-xl shadow-lg">
+        <h2 class="text-2xl font-bold gradient-text mb-4">🚀 Our Mission</h2>
+        <p class="text-gray-300">
+          All Sitters was created to connect people with trusted, verified sitters for pets, children, and homes —
+          in the most secure, transparent, and innovative way possible.  
+          We believe trust should be built through technology, not paperwork.
+        </p>
+      </section>
+
+      <!-- AI Section -->
+      <section class="card p-8 rounded-xl shadow-lg">
+        <h2 class="text-2xl font-bold gradient-text mb-4">🤖 Proudly Powered by Artificial Intelligence</h2>
+        <p class="text-gray-300 mb-4">
+          We’re not just using AI — we were built with it.  
+          From design to deployment, All Sitters was created entirely through AI-assisted development.  
+          Every line of code, every page, and every system you see here was shaped with the help of advanced language models.
+        </p>
+        <p class="text-gray-400 italic">
+          We think AI is the greatest thing since sliced bread — and we’re proving that innovation can empower everyday people.
+        </p>
+      </section>
+
+      <!-- Values -->
+      <section class="card p-8 rounded-xl shadow-lg">
+        <h2 class="text-2xl font-bold gradient-text mb-4">💡 Our Core Values</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-300">
+          <li><strong>Trust:</strong> Every sitter is background-checked and verified before they appear on the platform.</li>
+          <li><strong>Transparency:</strong> Clear pricing, automatic escrow, and visible verification statuses build confidence for everyone.</li>
+          <li><strong>Technology:</strong> We use smart systems and AI to automate safety, reliability, and user experience.</li>
+          <li><strong>Freedom:</strong> Sitters control their rates, clients choose their care — everyone wins.</li>
+        </ul>
+      </section>
+
+      <!-- Vision -->
+      <section class="card p-8 rounded-xl shadow-lg">
+        <h2 class="text-2xl font-bold gradient-text mb-4">🌍 Our Vision for the Future</h2>
+        <p class="text-gray-300">
+          We’re building more than a platform — we’re creating a future where AI-powered tools simplify trust between people.
+          From background checks to payments, we believe automation can make the world safer, faster, and more connected.  
+        </p>
+        <p class="text-gray-400 mt-3">
+          Whether it’s pet sitting, baby sitting, or house sitting, our goal is to redefine what reliability looks like in the digital age.
+        </p>
+      </section>
+
+      <!-- Founder -->
+      <section class="card p-8 rounded-xl shadow-lg text-center">
+        <h2 class="text-2xl font-bold gradient-text mb-4">🧑‍💻 About the Creator</h2>
+        <p class="text-gray-300 max-w-2xl mx-auto">
+          All Sitters was developed by a team of AI tools and one Data Scientist, by innovation and powered by AI — blending real-world experience with advanced data science.  
+          This platform represents what’s possible when human creativity and artificial intelligence work together. This platform was created by the world's physically second strongest Data Scientist.
+        </p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center text-gray-500 text-sm border-t border-white/10">
+      <p>© 2025 All Sitters — Built Entirely with AI • Innovating the Future of Care</p>
+    </footer>
+  </body>
+</html>
